@@ -1,0 +1,54 @@
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <title>{{.title}}</title>
+    <link href="/assets/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <h2>请求</h2>
+    <form class="request" id="JSrpc" method="post" onsubmit="send()">
+        <div class="url">
+            <select>
+                <option>GRPC</option>
+            </select>
+            <input name="url" placeholder="Enter request url">
+            <button type="submit">发送</button>
+        </div>
+        <h3>请求服务</h2>
+        <div class="service">
+            <div class="form-item">
+                <label>服务名：</label>
+                <input name="service">
+            </div>
+            <div class="form-item">
+                <label>方法名：</label>
+                <input name="method">
+            </div>
+        </div>
+        <h3>请求参数</h2>
+        <div class="body">
+            <textarea name="body" rows="10"></textarea>
+        </div>
+    </form>
+    <h2>响应</h2>
+    <div class="response"></div>
+    <script src="/assets/ajax.js"></script>
+    <script>
+        function send() {
+            var e = event || window.event;
+            e.preventDefault();
+            var form = document.getElementById('JSrpc');
+            var formData = new FormData(form);
+            var data = JSON.stringify({
+                url: formData.get('url'),
+                param: formData.get('body')
+            });
+            Ajax.post('/send', data, (res) => {
+                console.log(res);
+            });
+        }
+    </script>
+</body>
+</html>
