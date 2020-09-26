@@ -4,37 +4,158 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="renderer" content="webkit" />
     <title>{{.title}}</title>
-    <link href="/assets/style.css" rel="stylesheet" type="text/css">
+    <link href="../assets/style.css" rel="stylesheet" type="text/css">
+    <!-- <link rel="stylesheet" href="'../assets/rest.css'"> -->
 </head>
 <body>
-    <h2>请求</h2>
-    <form class="request" id="JSrpc" method="post" onsubmit="send()">
-        <div class="url">
-            <select>
-                <option>GRPC</option>
-            </select>
-            <input name="url" placeholder="Enter request url">
-            <button type="submit">发送</button>
+    <div class="header-nav">
+        <div class="w">
+            <ul class="nav-left">
+                <li><a href="javascript:;" class="current">New</a></li>
+                <li><a href="javascript:;">Import</a></li>
+                <li><a href="javascript:;">Runner</a></li>
+                <li><a href="javascript:;">></a></li>
+            </ul>
+            <ul class="nav-main">
+                <li><button>My Workspace</button></li>
+                <li><a href="javascript:;" class="sc">Invite</a></li>
+            </ul>
+            <ul class="nav-rigth">
+                <li class="eject-wrapper">
+                    <a class="ej" href="javascript:;">
+                        ·
+                        <!-- 添加一个弹出层 -->
+                       <div class="eject">
+                           <h4>Sign in to sync your Postman data</h4>
+                           <span>Syncing makes any changes to your Postman data available across devices linked to your account. Enable sync to never worry about losing your data.</span>
+                           <button class="button">Sign in</button>
+                       </div>
+                    </a>
+                </li>
+                <li><img src="" alt=""></li>
+                <li><a href="javascript:;">SignIn</a></li>
+            </ul>
         </div>
-        <h3>请求服务</h2>
-        <div class="service">
-            <div class="form-item">
-                <label>服务名：</label>
-                <input name="service">
+    </div>
+
+    <div class="main">
+        <div class="main-left">
+            <div class="search-w">
+                <input type="text" class="search" value="Filter">
             </div>
-            <div class="form-item">
-                <label>方法名：</label>
-                <input name="method">
+            <!--  -->
+            <ul class="tab-list" id="tablist">
+                <li class="current"><span>History</span></li>
+                <li ><span>Collections</span></li>
+                <li ><span>APls</span></li>
+            </ul>
+            <div class="tab-con" id='tabcon'>
+                <div class="item" style="display: block;" >
+                    <div class="item-top-top1">
+                        <p></p>
+                        <span >Save Responses</span>
+                        <a href="#">Clear all</a>
+                    </div>
+                    <!-- 底部 -->
+                    <div class="item-bottom">
+                        <h4>You havent't sent any requsets</h4>
+                        <span>Any request you send in this workspace will appear here.</span>
+                        <button>Show me how</button>
+                    </div>
+
+                </div>
+                <div class="item">
+                    <div class="item-top-top2">
+                        <p></p>
+                        <span class="p1">New Collection</span>
+                        <span class="p2">Trash</span>
+                    </div>
+                </div>
+                <div class="item">
+                    
+                </div>
             </div>
         </div>
-        <h3>请求参数</h2>
-        <div class="body">
-            <textarea name="body" rows="10"></textarea>
+
+        <div class="main-rigth">
+            <div class="main-rigth-top"></div>
+
+            <div class="main-rigth-main">
+                <h5>Untitled Request</h5>
+                <form class="request" id="JSrpc" method="post" onsubmit="send()">
+                    <div class="url">
+                        <div class="select-w">
+                            <select>
+                                <option>GRPC</option>
+                            </select>
+                            <input name="url" placeholder="Enter request url">
+                        </div>
+                        <button type="submit">send</button>
+                    </div>
+                    <ul class="item-list">
+                        <li class="current"><a href="#">Params</a></li>
+                        <li><a href="#">Auth</a></li>
+                        <li><a href="#">Headers</a></li>
+                        <li><a href="#">Body</a></li>
+                        <li><a href="#">Pre-req.</a></li>
+                        <li><a href="#">Tests</a></li>
+                        <li><a href="#">Settings</a></li>
+                    </ul>
+
+                    <h3>Query Params</h3>
+
+                    <table class="service"  cellspacing=0 cellpadding='5px'  >
+                        <tr class="tr">
+                          <th></th>
+                          <th >KEY</th>
+                          <th>VALUE</th>
+                          <th >DESCRIPTION</th>
+                        </tr>
+                        <tr >
+                          <td></td>
+                          <td><input name="service" value="key"></td>
+                          <td><input name="method" value="value"></td>
+                          <td><input name="description" value="description"></input></td>
+                        </tr>
+                       
+                      </table>
+                </form>
+
+                    <!-- <div class="service">
+                        <div class="form-item">
+                            <label>服务名：</label>
+                            <input name="service">
+                        </div>
+                        <div class="form-item">
+                            <label>方法名：</label>
+                            <input name="method">
+                        </div>
+                    </div>
+                    <h3>请求参数</h2>
+                    <div class="body">
+                        <textarea name="body" rows="10"></textarea>
+                    </div>-->
+                
+                <!-- <h2>响应</h2>  -->
+
+            </div>
+
+
+            <div class="main-rigth-bottom">
+                <div class="no">Response</div>
+                <div class="body">
+                    <textarea name="body" rows="10"></textarea>
+                </div>
+            </div>
         </div>
-    </form>
-    <h2>响应</h2>
+    </div>
+
+
     <div class="response"></div>
-    <script src="/assets/ajax.js"></script>
+
+    <!-- <div class="foot"></div> -->
+
+    <script src="../assets/ajax.js"></script>
     <script>
         function send() {
             var e = event || window.event;
@@ -43,12 +164,19 @@
             var formData = new FormData(form);
             var data = JSON.stringify({
                 url: formData.get('url'),
+                service: formData.get('service'),
+                method: formData.get('method'),
+                description: formData.get('descriptionurl'),
                 param: formData.get('body')
             });
+            var data = formData; 
+            // console.log(formData.getAll());
             Ajax.post('/send', data, (res) => {
                 console.log(res);
             });
         }
     </script>
+
+    <script src="../assets/index.js"></script>
 </body>
 </html>
