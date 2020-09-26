@@ -28,23 +28,43 @@
 //    }
 // }
 //   切换栏   切换内容   样式
-Togglebar('tablist','tabcon','current')
+// Togglebar('tablist','tabcon','current')
+Togglebar({
+    tabList:'tab-list',
+    tabContent:'tab-con',
+    current:'current'
+});
+
+Togglebar({
+    tabList:'item-list',
+    tabContent:null,
+    current:'current'
+});
 
 
-function Togglebar(tab,content,current){
-    var tabs = document.getElementById(tab);
+
+
+function Togglebar(options){
+    var tabs = document.getElementById(options.tabList);
     var lis = tabs.children;
-    var contents = document.getElementById(content);
-    var item = contents.children;
+    if(!(options.tabContent == null)){
+        var contents = document.getElementById(options.tabContent);
+        var item = contents.children;
+        var flag = 1
+    };
     for (var j = 0; j < lis.length; j++) {
         lis[j].index = j
         lis[j].onclick = function(){
             for (var j = 0; j <lis.length; j++) {
                 lis[j].className = ''
-                item[j].style.display = 'none'
+                if(flag){
+                    item[j].style.display = 'none'
+                }
             }
-            this.className = current
-            item[this.index].style.display = 'block'
+            this.className = options.current
+            if(flag){
+                item[this.index].style.display = 'block'
+            }
         }
     }
 
