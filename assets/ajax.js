@@ -16,7 +16,9 @@ var Ajax={
       var xhr = new XMLHttpRequest();
       xhr.open("POST", url, true);
       // 添加http头，发送信息至服务器时内容编码类型
-      xhr.setRequestHeader("Content-Type", "application/json");  
+      // xhr.setRequestHeader("Content-Type", "application/json");  
+      // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");  
+
       xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 304)) {
           fn.call(this, xhr.responseText);
